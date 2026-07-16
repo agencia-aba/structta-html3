@@ -1,0 +1,106 @@
+RewriteEngine On
+RewriteBase /
+
+# Remove .php da URL (301 para SEO) — mantido para compatibilidade com links antigos
+RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Páginas dedicadas de categoria → servir .html
+RewriteRule ^projetos/box/?$             projetos/box.html             [L,QSA]
+RewriteRule ^projetos/coberturas/?$      projetos/coberturas.html      [L,QSA]
+RewriteRule ^projetos/envidracamentos/?$ projetos/envidracamentos.html [L,QSA]
+RewriteRule ^projetos/fechamentos/?$     projetos/fechamentos.html     [L,QSA]
+RewriteRule ^projetos/guarda-corpos/?$   projetos/guarda-corpos.html   [L,QSA]
+RewriteRule ^projetos/janelas/?$         projetos/janelas.html         [L,QSA]
+RewriteRule ^projetos/peles-vidro/?$     projetos/peles-vidro.html     [L,QSA]
+RewriteRule ^projetos/persianas/?$       projetos/persianas.html       [L,QSA]
+RewriteRule ^projetos/portoes/?$         projetos/portoes.html         [L,QSA]
+RewriteRule ^projetos/portas/?$          projetos/portas.html          [L,QSA]
+
+# Acesso direto à pasta projetos/ → projetos.html
+RewriteRule ^projetos/?$ projetos.html [L,QSA]
+
+# Páginas sem extensão → arquivo .html correspondente
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/?$ $1.html [L,QSA]
+
+# ============================================================
+# CACHE DE LONGA DURAÇÃO — ativos estáticos
+# ============================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Imagens: 1 ano
+  ExpiresByType image/webp             "access plus 1 year"
+  ExpiresByType image/jpeg             "access plus 1 year"
+  ExpiresByType image/jpg              "access plus 1 year"
+  ExpiresByType image/png              "access plus 1 year"
+  ExpiresByType image/gif              "access plus 1 year"
+  ExpiresByType image/svg+xml          "access plus 1 year"
+  ExpiresByType image/x-icon           "access plus 1 year"
+
+  # CSS e JS: 1 ano
+  ExpiresByType text/css               "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript        "access plus 1 year"
+
+  # Fontes: 1 ano
+  ExpiresByType font/woff2                 "access plus 1 year"
+  ExpiresByType font/woff                  "access plus 1 year"
+  ExpiresByType application/font-woff2     "access plus 1 year"
+  ExpiresByType application/font-woff      "access plus 1 year"
+
+  # HTML e dados: sempre fresco
+  ExpiresByType text/html              "access plus 0 seconds"
+  ExpiresByType application/json       "access plus 0 seconds"
+  ExpiresByType application/xml        "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Cache longo para ativos estáticos
+  <FilesMatch "\.(webp|jpg|jpeg|png|gif|svg|ico|css|js|woff2|woff)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Sem cache para HTML/PHP
+  <FilesMatch "\.(php|html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # ============================================================
+  # SEGURANÇA
+  # ============================================================
+
+  # HSTS: força HTTPS por 1 ano
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Impede clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Impede MIME sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Política de referrer
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Cross-Origin-Opener-Policy
+  Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+
+  # Limita features do browser desnecessárias
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+  # Content-Security-Policy
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.whatsapp.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'"
+</IfModule>
+
+# ============================================================
+# COMPRESSÃO GZIP
+# ============================================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json text/xml application/xml
+  AddOutputFilterByType DEFLATE font/woff2 font/woff image/svg+xml
+</IfModule>
