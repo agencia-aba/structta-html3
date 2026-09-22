@@ -434,6 +434,7 @@
 .dot-aldeia      { bottom: 20%; right: 10%; }
 .dot-granja      { bottom: 10%; left: 50%; transform: translateX(-50%); }
 .dot-granja span { order: -1; }
+.dot-zonasul     { top: 30%; left: 5%; }
 
 /* ---- CTA ---- */
 .sobre-cta {
