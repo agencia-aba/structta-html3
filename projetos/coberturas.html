@@ -3,6 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Consent Mode v2 -- precisa vir ANTES do GTM -->
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    wait_for_update: 500
+  });
+  try {
+    if (localStorage.getItem('structta_cookies') === 'all') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted'
+      });
+    }
+  } catch (e) {}
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NG79GX8N');</script>
+  <!-- End Google Tag Manager -->
   <meta name="description" content="Coberturas em alumínio e vidro para áreas externas, varandas, piscinas e garagens. Projetos sob medida em São Paulo e região." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Structta Esquadrias de Alumínio" />
@@ -36,6 +65,10 @@
   </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NG79GX8N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <style>
 .cat-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 60vh; }
 .cat-hero-img { position: relative; overflow: hidden; min-height: 340px; }

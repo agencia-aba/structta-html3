@@ -52,6 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(() => requestAnimationFrame(() => banner.classList.add('visible')));
       function dismiss(val) {
         try { localStorage.setItem('structta_cookies', val); } catch(e) {}
+        if (typeof window.gtag === 'function') {
+          const granted = val === 'all' ? 'granted' : 'denied';
+          window.gtag('consent', 'update', {
+            ad_storage: granted,
+            ad_user_data: granted,
+            ad_personalization: granted,
+            analytics_storage: granted
+          });
+        }
         banner.classList.remove('visible');
         setTimeout(() => banner.remove(), 500);
       }
