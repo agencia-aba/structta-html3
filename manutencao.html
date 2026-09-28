@@ -79,13 +79,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .cat-hero-img { height: 260px; align-self: stretch; }
   .cat-hero-content { padding: 2.5rem 1.5rem; }
 }
-.manut-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-@media (max-width: 900px) { .manut-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .manut-grid { grid-template-columns: 1fr; } }
-.manut-card { background: var(--dark-2); border: 1px solid rgba(201,168,76,0.15); border-radius: var(--radius); padding: 1.75rem; }
-.manut-card svg { color: var(--gold); margin-bottom: 0.9rem; }
-.manut-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; color: var(--white); margin-bottom: 0.5rem; }
-.manut-card p { font-size: 0.92rem; color: var(--mid); line-height: 1.5; }
+.manut-services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2.5rem; }
+@media (max-width: 900px) { .manut-services-grid { grid-template-columns: 1fr; } }
+.manut-service-card { background: var(--dark-2); border: 1px solid rgba(201,168,76,0.15); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.manut-service-img { aspect-ratio: 3/2; overflow: hidden; }
+.manut-service-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.manut-service-body { padding: 1.75rem; display: flex; flex-direction: column; flex: 1; }
+.manut-service-num { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.1em; color: var(--gold); font-weight: 600; margin-bottom: 0.5rem; }
+.manut-service-body h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; color: var(--white); margin-bottom: 0.75rem; line-height: 1.25; }
+.manut-service-body p { font-size: 0.92rem; color: var(--mid); line-height: 1.6; margin-bottom: 1.25rem; }
+.manut-service-tags { list-style: none; margin: auto 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.manut-service-tags li { font-size: 0.76rem; letter-spacing: 0.02em; color: var(--gold-light); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius: 999px; padding: 0.35rem 0.8rem; }
+
+.manut-benefits { padding: 5rem 0; background: var(--black); }
+.manut-benefits-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+.manut-benefits-lede { color: var(--mid); font-size: 1rem; max-width: 60ch; margin: 1rem 0 3rem; }
+.manut-benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem 3rem; }
+@media (max-width: 768px) { .manut-benefits-grid { grid-template-columns: 1fr; } }
+.manut-benefit-item { display: flex; align-items: flex-start; gap: 1rem; }
+.manut-benefit-num { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.4); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 600; color: var(--gold); }
+.manut-benefit-item h4 { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--white); margin-bottom: 0.3rem; }
+.manut-benefit-item p { font-size: 0.9rem; color: var(--mid); line-height: 1.5; }
 .cat-hero-list { list-style: none; margin: 1.75rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
 .cat-hero-list li { position: relative; padding-left: 1.6rem; font-size: 0.98rem; color: var(--light); }
 .cat-hero-list li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
@@ -146,7 +160,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="cat-section">
   <div class="cat-section-inner">
     <div class="cat-desc">
-      <p>Além da fabricação e instalação, a Structta também presta manutenção em esquadrias de alumínio e vidros temperados: reparo de vidro trincado, ajuste de peças que emperraram, troca de vedação e revisão geral para devolver o funcionamento original da esquadria.</p>
+      <p>Além da fabricação e instalação, a Structta também presta manutenção completa em esquadrias de alumínio e vidros temperados: de box e janelas a portões automáticos, fachadas em pele de vidro e coberturas — reparo de vidro trincado, ajuste de peças que emperraram, troca de vedação e revisão geral para devolver o funcionamento original de cada esquadria.</p>
       <p>Atendemos residências, condomínios e comércios em Alphaville, Tamboré, Aldeia da Serra, Granja Viana, Zona Sul de São Paulo (Morumbi, Moema, Brooklin) e Grande São Paulo.</p>
       <div class="cat-actions">
         <a href="https://api.whatsapp.com/send?phone=5511963275113&text=Ol%C3%A1%20Structta%21%20Preciso%20de%20manuten%C3%A7%C3%A3o%20em%20vidros%2Fesquadrias%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
@@ -156,36 +170,172 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <div class="manut-grid">
-      <div class="manut-card reveal">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <h3>Troca de vidro trincado ou quebrado</h3>
-        <p>Substituição de vidro temperado em janelas, portas, box e guarda-corpos.</p>
+    <div class="manut-services-grid">
+      <div class="manut-service-card reveal">
+        <div class="manut-service-img"><img src="/fotos/box/box45-2.jpg" alt="Manutenção de box de vidro — Structta" loading="lazy" width="640" height="420" /></div>
+        <div class="manut-service-body">
+          <span class="manut-service-num">01</span>
+          <h3>Manutenção de Box</h3>
+          <p>Box de vidro que emperra, desliza torto ou vaza água na hora do banho perde a função. Fazemos a troca de roldanas desgastadas, regulagem completa do sistema de deslizamento e vedação nova — devolvendo o funcionamento suave e a estanqueidade original do seu box.</p>
+          <ul class="manut-service-tags">
+            <li>Troca de roldanas</li>
+            <li>Regulagem do sistema</li>
+            <li>Vedação completa</li>
+          </ul>
+        </div>
       </div>
-      <div class="manut-card reveal reveal-delay-1">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-        <h3>Ajuste e troca de roldanas</h3>
-        <p>Correção de janelas e portas que emperram, saem do trilho ou fazem ruído ao deslizar.</p>
+
+      <div class="manut-service-card reveal reveal-delay-1">
+        <div class="manut-service-img"><img src="/fotos/portas/porta-divisoria.jpg" alt="Manutenção de portas e janelas de alumínio — Structta" loading="lazy" width="640" height="420" /></div>
+        <div class="manut-service-body">
+          <span class="manut-service-num">02</span>
+          <h3>Manutenção de Portas e Janelas de Alumínio e Vidro</h3>
+          <p>Portas e janelas de alumínio que travam, não fecham direito ou perderam a fechadura comprometem o conforto e a segurança do imóvel. Fazemos troca de roldanas, regulagem fina das folhas, substituição de fechaduras, trincos e fechos — para que cada abertura funcione como no primeiro dia.</p>
+          <ul class="manut-service-tags">
+            <li>Troca de roldanas</li>
+            <li>Regulagem</li>
+            <li>Fechadura</li>
+            <li>Trincos e fecho</li>
+          </ul>
+        </div>
       </div>
-      <div class="manut-card reveal reveal-delay-2">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <h3>Troca de vedação e borrachas</h3>
-        <p>Substituição de escovas e borrachas de vedação, eliminando infiltração e ruído.</p>
+
+      <div class="manut-service-card reveal reveal-delay-2">
+        <div class="manut-service-img"><img src="/fotos/portoes/portao-giro2.jpg" alt="Manutenção de portões de alumínio — Structta" loading="lazy" width="640" height="420" /></div>
+        <div class="manut-service-body">
+          <span class="manut-service-num">03</span>
+          <h3>Manutenção de Portões de Alumínio</h3>
+          <p>Atendemos portões basculantes, de correr e de abrir, tanto automáticos quanto manuais. Da regulagem de dobradiças e trilhos à revisão de motores e sistemas de automação, garantimos que o portão da sua casa, condomínio ou comércio continue funcionando com segurança e sem travamentos.</p>
+          <ul class="manut-service-tags">
+            <li>Basculante</li>
+            <li>De correr</li>
+            <li>De abrir</li>
+            <li>Automático e manual</li>
+          </ul>
+        </div>
       </div>
-      <div class="manut-card reveal">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21v-7a8 8 0 0116 0v7"/><path d="M4 21h16"/></svg>
-        <h3>Regulagem de portas e janelas</h3>
-        <p>Alinhamento de folhas, dobradiças e fechos para o fechamento correto da esquadria.</p>
+
+      <div class="manut-service-card reveal">
+        <div class="manut-service-img"><img src="/fotos/manutencao/esquadrias-automaticas.jpg" alt="Manutenção de esquadrias automáticas — Structta" loading="lazy" width="640" height="420" /></div>
+        <div class="manut-service-body">
+          <span class="manut-service-num">04</span>
+          <h3>Manutenção de Esquadrias Automáticas</h3>
+          <p>Motores de persiana e portas de entrada comercial automática exigem manutenção especializada para continuar funcionando com segurança e eficiência. Revisamos sistemas de automação, sensores e controles remotos, evitando travamentos e paradas inesperadas no seu comércio ou empreendimento.</p>
+          <ul class="manut-service-tags">
+            <li>Motor de persiana</li>
+            <li>Porta de entrada automática</li>
+            <li>Sistema de automação</li>
+            <li>Controle remoto</li>
+          </ul>
+        </div>
       </div>
-      <div class="manut-card reveal reveal-delay-1">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
-        <h3>Troca de fechaduras e puxadores</h3>
-        <p>Substituição de ferragens desgastadas em portas e portões de alumínio.</p>
+
+      <div class="manut-service-card reveal reveal-delay-1">
+        <div class="manut-service-img"><img src="/fotos/pelevidro/pele2.webp" alt="Manutenção de fachada em pele de vidro — Structta" loading="lazy" width="640" height="420" /></div>
+        <div class="manut-service-body">
+          <span class="manut-service-num">05</span>
+          <h3>Manutenção e Reforma de Fachada de Vidro e Pele de Vidro</h3>
+          <p>Fachadas em pele de vidro exigem inspeção e manutenção periódica para manter a segurança estrutural e a estética do edifício. Fazemos troca de borrachas de vedação, substituição de vidros danificados e vedação completa da fachada, com equipe especializada em trabalho em altura.</p>
+          <ul class="manut-service-tags">
+            <li>Troca de borrachas</li>
+            <li>Troca de vidros</li>
+            <li>Vedação completa</li>
+          </ul>
+        </div>
       </div>
-      <div class="manut-card reveal reveal-delay-2">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
-        <h3>Revisão geral e manutenção preventiva</h3>
-        <p>Vistoria completa das esquadrias, indicada para condomínios e imóveis comerciais.</p>
+
+      <div class="manut-service-card reveal reveal-delay-2">
+        <div class="manut-service-img"><img src="/fotos/manutencao/mola-de-piso.jpg" alt="Troca de mola de piso — Structta" loading="lazy" width="640" height="420" /></div>
+        <div class="manut-service-body">
+          <span class="manut-service-num">06</span>
+          <h3>Troca de Molas de Piso</h3>
+          <p>A mola de piso é a peça que garante o fechamento suave e seguro de portas de vidro temperado — quando falha, a porta bate, emperra ou fica insegura. Fazemos manutenção, ajuste e instalação de molas de piso e molas aéreas, devolvendo o funcionamento preciso da sua porta.</p>
+          <ul class="manut-service-tags">
+            <li>Mola aérea</li>
+            <li>Manutenção</li>
+            <li>Instalação nova</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="manut-service-card reveal">
+        <div class="manut-service-img"><img src="/fotos/envidracamentos/env2.webp" alt="Manutenção de envidraçamento de sacadas — Structta" loading="lazy" width="640" height="420" /></div>
+        <div class="manut-service-body">
+          <span class="manut-service-num">07</span>
+          <h3>Manutenção de Envidraçamento de Sacadas</h3>
+          <p>Envidraçamentos de sacada com trilhos empenados, vidros embaçados ou vedação comprometida perdem conforto térmico, acústico e segurança. Fazemos ajuste de trilhos e roldanas, troca de vedações e borrachas, limpeza especializada dos vidros e manutenção completa dos sistemas de abertura.</p>
+          <ul class="manut-service-tags">
+            <li>Ajuste de trilhos e roldanas</li>
+            <li>Troca de vedações</li>
+            <li>Limpeza especializada</li>
+            <li>Sistemas de abertura</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="manut-service-card reveal reveal-delay-1">
+        <div class="manut-service-img"><img src="/fotos/cobertura/12cobertura.webp" alt="Manutenção de coberturas de vidro e policarbonato — Structta" loading="lazy" width="640" height="420" /></div>
+        <div class="manut-service-body">
+          <span class="manut-service-num">08</span>
+          <h3>Vedação e Manutenção de Coberturas de Vidros e Policarbonatos</h3>
+          <p>Coberturas de vidro e policarbonato protegem o seu espaço da chuva e do sol, mas juntas ressecadas e perfis desgastados comprometem essa proteção. Fazemos revedação de juntas e perfis, limpeza especializada, inspeção e troca de perfis e borrachas — mantendo a cobertura estanque, bonita e segura por muito mais tempo.</p>
+          <ul class="manut-service-tags">
+            <li>Revedação de juntas</li>
+            <li>Limpeza especializada</li>
+            <li>Troca de perfis e borrachas</li>
+            <li>Manutenção preventiva</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="manut-benefits">
+  <div class="manut-benefits-inner">
+    <span class="section-label">Por que cuidar hoje</span>
+    <h2 class="section-title reveal">10 Benefícios da<br><em>Manutenção Preventiva</em></h2>
+    <p class="manut-benefits-lede reveal reveal-delay-1">Cuidar hoje é garantir o bom funcionamento, a segurança e a beleza do seu imóvel por muito mais tempo.</p>
+    <div class="manut-benefits-grid">
+      <div class="manut-benefit-item reveal">
+        <span class="manut-benefit-num">1</span>
+        <div><h4>Mais Segurança</h4><p>Evita falhas e reduz o risco de acidentes.</p></div>
+      </div>
+      <div class="manut-benefit-item reveal">
+        <span class="manut-benefit-num">6</span>
+        <div><h4>Prolonga a Vida Útil</h4><p>Mantém o bom funcionamento por muito mais tempo.</p></div>
+      </div>
+      <div class="manut-benefit-item reveal">
+        <span class="manut-benefit-num">2</span>
+        <div><h4>Funcionamento Perfeito</h4><p>Evita travamentos, ruídos e desgastes.</p></div>
+      </div>
+      <div class="manut-benefit-item reveal">
+        <span class="manut-benefit-num">7</span>
+        <div><h4>Preserva a Estética</h4><p>Mantém o visual moderno e valorizado do seu imóvel.</p></div>
+      </div>
+      <div class="manut-benefit-item reveal">
+        <span class="manut-benefit-num">3</span>
+        <div><h4>Economia</h4><p>Previne reparos emergenciais e reduz custos futuros.</p></div>
+      </div>
+      <div class="manut-benefit-item reveal">
+        <span class="manut-benefit-num">8</span>
+        <div><h4>Valoriza o Imóvel</h4><p>Esquadrias e vidros bem cuidados aumentam o valor de mercado.</p></div>
+      </div>
+      <div class="manut-benefit-item reveal">
+        <span class="manut-benefit-num">4</span>
+        <div><h4>Evita Infiltrações</h4><p>Garante a vedação e o isolamento adequado.</p></div>
+      </div>
+      <div class="manut-benefit-item reveal">
+        <span class="manut-benefit-num">9</span>
+        <div><h4>Maior Conforto</h4><p>Melhor isolamento térmico e acústico para o seu dia a dia.</p></div>
+      </div>
+      <div class="manut-benefit-item reveal">
+        <span class="manut-benefit-num">5</span>
+        <div><h4>Evita Quebras</h4><p>Identifica e corrige desgastes antes que se tornem grandes problemas.</p></div>
+      </div>
+      <div class="manut-benefit-item reveal">
+        <span class="manut-benefit-num">10</span>
+        <div><h4>Sustentabilidade</h4><p>Reduz o descarte de materiais e contribui para um consumo mais consciente.</p></div>
       </div>
     </div>
   </div>
